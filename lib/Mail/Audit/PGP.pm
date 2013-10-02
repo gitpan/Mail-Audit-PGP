@@ -1,11 +1,13 @@
-package Mail::Audit::PGP;
-use Mail::Audit;
-use vars qw(@VERSION);
-$VERSION = '1.701';
-1;
-
-package Mail::Audit;
 use strict;
+package Mail::Audit::PGP;
+{
+  $Mail::Audit::PGP::VERSION = '1.702';
+}
+# ABSTRACT: Mail::Audit plugin for PGP header fixing
+use Mail::Audit 2.217;
+
+package
+  Mail::Audit;
 
 sub fix_pgp_headers {
   my $item      = shift;
@@ -39,6 +41,7 @@ sub fix_pgp_headers {
 }
 
 1;
+
 __END__
 
 =pod
@@ -47,12 +50,16 @@ __END__
 
 Mail::Audit::PGP - Mail::Audit plugin for PGP header fixing
 
+=head1 VERSION
+
+version 1.702
+
 =head1 SYNOPSIS
 
-    use Mail::Audit qw(PGP);
-	my $mail = Mail::Audit->new;
-    ...
-    $mail->fix_pgp_headers;
+  use Mail::Audit qw(PGP);
+  my $mail = Mail::Audit->new;
+  ...
+  $mail->fix_pgp_headers;
 
 =head1 DESCRIPTION
 
@@ -61,10 +68,19 @@ whether a given email contains a PGP-signed or -encrypted message, and
 if so, adds the relevant headers to tell the mailer to check the
 signature or decrypt it.
 
-=head1 AUTHOR
-
-Simon Cozens <simon@cpan.org>
-
 =head1 SEE ALSO
 
 L<Mail::Audit>
+
+=head1 AUTHOR
+
+Simon Cozens
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2003 by Simon Cozens.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
